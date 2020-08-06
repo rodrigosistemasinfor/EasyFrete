@@ -8,14 +8,16 @@ import { HomePage } from './pages/home/home.page';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ng6-toastr-notifications';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
+import { LojasComponent } from './pages/lojas/lojas.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePage
+    HomePage,
+    LojasComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { NgxMaskModule } from 'ngx-mask'
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
+
   ],
   providers: [
     HttpClient,
