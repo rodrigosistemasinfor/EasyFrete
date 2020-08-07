@@ -13,7 +13,10 @@ namespace EasyFreteApp.Infra.Data.Interface
 {
     public interface IContext
     {
+        DbSet<CepEntity> Cep { get; set; }
+        DbSet<EmpresaEntity> Empresa { get; set; }
         DbSet<UsuarioEntity> Usuario { get; set; }
+        DbSet<CentroDistribuicaoEntity> CentroDistribuicao { get; set; }
 
         ChangeTracker ChangeTracker { get; }
         DatabaseFacade Database { get; }

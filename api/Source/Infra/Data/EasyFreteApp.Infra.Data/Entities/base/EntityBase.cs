@@ -6,5 +6,6 @@ namespace EasyFreteApp.Infra.Data.Entities
     {
        [Key]
        public int Id { get; set; }
+       public bool Ativo { get; set; }
     }
 }

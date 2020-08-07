@@ -10,6 +10,9 @@ namespace EasyFreteApp.Infra.CrossCutting
         {
             CreateMap<UsuarioEntity, UsuarioDomain>();
             CreateMap<UsuarioDomain, UsuarioEntity>();
+
+            CreateMap<EmpresaEntity, EmpresaDomain>();
+            CreateMap<EmpresaDomain, EmpresaEntity>();
         }
     }
 }

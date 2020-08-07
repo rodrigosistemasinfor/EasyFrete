@@ -66,19 +66,5 @@ namespace EasyFreteApp.Presentation.UI.Controllers
                 return BadRequest(ex);
             }
         }
-
-        [HttpPost("delete")]
-        public ActionResult Delete([FromBody] UsuarioSeletor seletor)
-        {
-            try
-            {
-                _service.Delete(seletor);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
     }
 }

@@ -13,17 +13,43 @@ namespace EasyFreteApp.Infra.Data
 
         }
 
+        public virtual DbSet<CepEntity> Cep { get; set; }
+        public virtual DbSet<EmpresaEntity> Empresa { get; set; }
         public virtual DbSet<UsuarioEntity> Usuario { get; set; }
+        public virtual DbSet<CentroDistribuicaoEntity> CentroDistribuicao { get; set; }
 
         public virtual DbContext DbContext => this;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CepEntity>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.Cep).IsUnique();
+            });
+
+            modelBuilder.Entity<EmpresaEntity>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.Nome).IsUnique();
+            });
+
             modelBuilder.Entity<UsuarioEntity>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.HasIndex(e => e.CPF).IsUnique();
-                entity.HasIndex(e => e.RG).IsUnique();
+                entity.HasIndex(e => e.UserName).IsUnique();
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+
+            modelBuilder.Entity<CepEntity>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.Cep).IsUnique();
+            });
+
+            modelBuilder.Entity<CentroDistribuicaoEntity>(entity =>
+            {
+                entity.HasKey(e => e.Id);
             });
 
         }
