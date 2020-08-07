@@ -1,4 +1,45 @@
-<div>
+<div style="height: 100%;width: 100%;position: absolute;">
   <div id="map"></div>
-  <button class="btn btn-primary" (click)="addInteraction()" color="accent">Novo</button>
+  <div class="sidepanel">
+    <div class="container-fluid">
+      <span class="sidepanel-title">Cadastrar pontos de entrega</span>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="lj">Lojas</label>
+              <select class="form-control" id="lj">
+                <option>LJ1</option>
+                <option>LJ2</option>
+                <option>LJ3</option>
+                <option>LJ4</option>
+                <option>LJ5</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="text-align: center">
+            <button class="btn btn-primary" (click)="addInteraction()"
+              color="accent">{{arrayRadius.length>0?'Salvar':'Adicionar raios de preço'}}</button>
+          </div>
+        </div>
+        <div style="overflow-y:auto; max-height:600px; margin-top:15px;" class="row">
+          <div *ngFor="let radius of arrayRadius" class="row card" style="width: 100%;">
+            <div class="card-header">
+              {{radius.Lat}} , {{radius.Long}}
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="form-group">
+                  <label class="label-preco" for="name">Preço</label>
+                  <input type="number" class="form-control" id="name" placeholder="Preço frete, ex: R$3,50">
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
