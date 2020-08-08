@@ -13,7 +13,7 @@ export class EnderecoService{
     private endPoint: string;
 
     constructor(private http: HttpClient) {
-        this.endPoint =  `${environment.ApiCEP}`;
+        this.endPoint =  `${environment.Api}cep/`;
     }
     
     httpOptions = {
@@ -21,7 +21,7 @@ export class EnderecoService{
     };
 
     getEndereco(cep: string) : Observable<EnderecoModel>{
-      return this.http.get(`${this.endPoint}${cep}/json`)
+      return this.http.get(`${this.endPoint}${cep}`)
         .pipe(
              retry(5),
              map(resp => new EnderecoModel(resp))

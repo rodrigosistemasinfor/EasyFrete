@@ -37,6 +37,7 @@ export class HomePage implements OnInit {
        .subscribe(x => {
           if(x.CEP){
             x.Complemento = "";
+            x.CEP = this.model.CEP;
             this.model = x;
           }else
            this.toastr.warningToastr("CEP não encontrado");

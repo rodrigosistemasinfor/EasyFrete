@@ -21,7 +21,7 @@ export class EnderecoModel extends DomainBase {
     this.Logradouro = data.logradouro || data.Logradouro || data.LOGRADOURO;
     this.Complemento = data.complemento || data.Complemento || data.COMPLEMENTO;
     this.Bairro = data.bairro || data.Bairro;
-    this.Cidade = data.localidade || data.Localidade;
+    this.Cidade = data.cidade || data.Cidade;
     this.Uf = data.uf || data.Uf;
     this.Numero = data.numero || data.Numero;
   }
