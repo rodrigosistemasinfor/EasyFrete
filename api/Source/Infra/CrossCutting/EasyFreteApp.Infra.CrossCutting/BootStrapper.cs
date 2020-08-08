@@ -22,9 +22,12 @@ namespace EasyFreteApp.Infra.CrossCutting
         {
             // Service
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<ICepService, CepService>();
 
             // Repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ICepRepository, CepRepository>();
+
 
             //connectionString
             var connectionString = $"Server={DATABASE_HOST}{(string.IsNullOrEmpty(DATABASE_PORT) ? "" : "," + DATABASE_PORT)};Database={DATABASE_NAME};User Id={DATABASE_USER};Password={DATABASE_PASS}";

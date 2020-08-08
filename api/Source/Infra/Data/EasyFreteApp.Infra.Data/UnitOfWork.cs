@@ -1,5 +1,7 @@
 ﻿using EasyFreteApp.Infra.Data.Interface;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using System.Data;
 
 namespace EasyFreteApp.Infra.Data
 {
@@ -22,6 +24,12 @@ namespace EasyFreteApp.Infra.Data
         {
             if (!ExistsTransaction())
                 Transaction = Context.Database.BeginTransaction();
+        }
+
+        public void StartTransaction(IsolationLevel level)
+        {
+            if (!ExistsTransaction())
+                Transaction = Context.Database.BeginTransaction(level);
         }
 
         public void Commit()

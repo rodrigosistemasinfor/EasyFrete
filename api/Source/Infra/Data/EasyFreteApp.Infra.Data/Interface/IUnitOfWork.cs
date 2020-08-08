@@ -1,4 +1,6 @@
-﻿namespace EasyFreteApp.Infra.Data.Interface
+﻿using System.Data;
+
+namespace EasyFreteApp.Infra.Data.Interface
 {
     public interface IUnitOfWork
     {
@@ -7,6 +9,8 @@
         bool ExistsTransaction();
 
         void StartTransaction();
+
+        void StartTransaction(IsolationLevel level);
 
         void Commit();
 
