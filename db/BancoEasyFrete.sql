@@ -42,3 +42,16 @@ CREATE TABLE EasyFrete.Cep
   DataInclusao datetime NOT NULL DEFAULT GetDate(),
   Ativo bit NOT NULL DEFAULT 1
 )
+
+
+CREATE TABLE EasyFrete.RaioPreco
+(
+	Id int IDENTITY NOT NULL PRIMARY KEY,
+	IdCentroDistribuicao int NOT NULL,
+	Latitude DECIMAL(20, 10) NOT NULL,
+	Longitude DECIMAL(20, 10) NOT NULL,
+	Raio DECIMAL(20, 10) NOT NULL,
+	Preco DECIMAL(20, 10) NOT NULL,
+	Ativo bit NOT NULL DEFAULT 1,
+	CONSTRAINT Fk_CENTRO_DISTRIBUICAO_RAIO_PRECO FOREIGN KEY (IdCentroDistribuicao) REFERENCES EasyFrete.CentroDistribuicao(Id)
+)
