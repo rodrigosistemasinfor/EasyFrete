@@ -17,6 +17,7 @@ namespace EasyFreteApp.Infra.Data.Interface
         DbSet<EmpresaEntity> Empresa { get; set; }
         DbSet<UsuarioEntity> Usuario { get; set; }
         DbSet<CentroDistribuicaoEntity> CentroDistribuicao { get; set; }
+        DbSet<RaioPrecoEntity> RaioPreco { get; set; }
 
         ChangeTracker ChangeTracker { get; }
         DatabaseFacade Database { get; }

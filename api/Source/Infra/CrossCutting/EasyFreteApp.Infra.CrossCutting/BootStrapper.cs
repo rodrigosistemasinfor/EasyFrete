@@ -23,10 +23,12 @@ namespace EasyFreteApp.Infra.CrossCutting
             // Service
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ICepService, CepService>();
+            services.AddScoped<IRaioPrecoService, RaioPrecoService>();
 
             // Repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ICepRepository, CepRepository>();
+            services.AddScoped<IRaioPrecoRepository, RaioPrecoRepository>();
 
 
             //connectionString

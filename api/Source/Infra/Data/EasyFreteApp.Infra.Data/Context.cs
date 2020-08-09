@@ -17,6 +17,7 @@ namespace EasyFreteApp.Infra.Data
         public virtual DbSet<EmpresaEntity> Empresa { get; set; }
         public virtual DbSet<UsuarioEntity> Usuario { get; set; }
         public virtual DbSet<CentroDistribuicaoEntity> CentroDistribuicao { get; set; }
+        public virtual DbSet<RaioPrecoEntity> RaioPreco { get; set; }
 
         public virtual DbContext DbContext => this;
 

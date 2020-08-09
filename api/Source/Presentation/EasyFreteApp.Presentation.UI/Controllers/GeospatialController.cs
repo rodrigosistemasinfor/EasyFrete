@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using EasyFreteApp.Presentation.UI.ViewModels;
+﻿using EasyFreteApp.Presentation.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace EasyFreteApp.Presentation.UI.Controllers
 {

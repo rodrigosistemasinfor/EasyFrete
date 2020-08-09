@@ -19,6 +19,13 @@ namespace EasyFreteApp.Infra.CrossCutting
             CreateMap<CepEntity, CepDomain>();
             CreateMap<CepDomain, CepEntity>();
 
+            CreateMap<CentroDistribuicaoEntity, CentroDistribuicaoDomain>();
+            CreateMap<CentroDistribuicaoDomain, CentroDistribuicaoEntity>();
+
+            CreateMap<RaioPrecoEntity, RaioPrecoDomain>();
+            CreateMap<RaioPrecoDomain, RaioPrecoEntity>();
+
+
             //map json to domain
             CreateMap<CepJsonDomain, CepDomain>()
                     .ForMember(json => json.Cep, domain => domain.MapFrom(src => ConvertCep(src.Cep)))
