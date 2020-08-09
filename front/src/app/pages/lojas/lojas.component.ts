@@ -15,6 +15,7 @@ import VectorSource from "ol/source/Vector";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import { FullScreen, defaults as defaultControls } from "ol/control";
+import { GeospatialService } from "src/app/services/geospatial.service";
 declare const ContextMenu: any;
 
 @Component({
@@ -22,7 +23,7 @@ declare const ContextMenu: any;
   styleUrls: ["./lojas.component.css"],
 })
 export class LojasComponent implements OnInit {
-  constructor() {}
+  constructor(private geospatialService: GeospatialService) {}
   map: any;
   draw: any;
   vectorSource: any;
@@ -37,12 +38,16 @@ export class LojasComponent implements OnInit {
     const drawType = event.target.mode_;
     const feature = event.feature.getGeometry();
     let draw = this.getDraw(drawType, feature);
-    this.arrayRadius.push({
-      Lat: draw.value.coord[1],
-      Long: draw.value.coord[0],
-      Raio: draw.value.radius,
-    } as RaioPreco);
-    console.log(this.getDraw(drawType, feature).raius);
+    this.geospatialService
+      .reverseGeocode(draw.value.coord[1], draw.value.coord[0])
+      .subscribe((res) => {
+        this.arrayRadius.push({
+          Lat: draw.value.coord[1],
+          Long: draw.value.coord[0],
+          Raio: Math.round(draw.value.radius * 100) / 100,
+          Descricao: res.data.adress,
+        } as RaioPreco);
+      });
   }
 
   private configureMap() {

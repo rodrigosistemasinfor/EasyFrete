@@ -12,6 +12,8 @@ export class RaioPreco extends DomainBase {
   public Preco: number;
   @JsonProperty({ name: 'Loja' })
   public Loja: number;
+  @JsonProperty({ name: 'Descricao' })
+  public Descricao: number;
 
   static Create(json: any): RaioPreco {
     return ObjectMapper.deserialize<RaioPreco>(RaioPreco, json);
