@@ -30,8 +30,7 @@ namespace EasyFreteApp.Presentation.UI.Controllers
                     responsereader = responsereader.Replace("\n", string.Empty);
                     JObject result = JObject.Parse(responsereader);
                     response.Close();
-                    var adress = result["Response"]["View"][0]["Result"][0]["Location"]["Address"]["Label"].ToString();
-                    return Ok(new ResponseViewModel(new GeospatialViewModel() { Adress = adress }, HttpStatusCode.OK));
+                    return Ok(new ResponseViewModel(new GeospatialViewModel() { }, HttpStatusCode.OK));
                 }
             }
             catch (WebException e)

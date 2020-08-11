@@ -9,6 +9,7 @@ namespace EasyFreteApp.Domain.Service
     {
         TDomain GetById(int id);
         TDomain Insert(TDomain obj);
+        IEnumerable<TDomain> InsertMany(IEnumerable<TDomain> objs);
         int Count(TSeletor seletor);
         IEnumerable<TDomain> GetList(TSeletor seletor);
         TDomain Update(TDomain solicitacaoAcompanhamentoDomain);

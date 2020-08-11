@@ -22,8 +22,9 @@ export class HomePage implements OnInit {
 
   ngOnInit() {}
 
-  private getPreco() {
-    this.geospatialService.geocode().subscribe()
+  getPreco() {
+    let txt = `${this.model.Logradouro.split(' ').join('+')}%2C${this.model.Numero}%${this.model.Bairro}+${this.model.CEP}+${this.model.Cidade}+${this.model.Uf}%2C+Brazil`;
+    this.geospatialService.geocode(txt).subscribe();
   }
 
   private getEndereco() {

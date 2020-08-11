@@ -32,6 +32,9 @@ namespace EasyFreteApp.Application.Service.Abstract
         public virtual TDomain Insert(TDomain obj)
                 => _repository.InsertWithReturningObject(obj);
 
+        public virtual IEnumerable<TDomain> InsertMany(IEnumerable<TDomain> objs)
+              => _repository.InsertManyReturningObject(objs);
+
         public abstract TDomain Update(TDomain domain);
     }
 }

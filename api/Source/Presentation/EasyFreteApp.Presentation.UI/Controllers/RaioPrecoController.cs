@@ -57,11 +57,11 @@ namespace EasyFreteApp.Presentation.UI.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(RaioPrecoDomain), 200)]
-        public ActionResult Insert([FromBody] RaioPrecoDomain domain)
+        public ActionResult Insert([FromBody] IEnumerable<RaioPrecoDomain> objs)
         {
             try
             {
-              return StatusCode((int)HttpStatusCode.Created, _service.Insert(domain));
+              return StatusCode((int)HttpStatusCode.Created, _service.InsertMany(objs));
             }
             catch (Exception ex)
             {

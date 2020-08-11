@@ -2,17 +2,17 @@ import { DomainBase } from "../domain/base/base.domain";
 import { ObjectMapper, JsonProperty } from "json-object-mapper";
 
 export class RaioPreco extends DomainBase {
-  @JsonProperty({ name: 'Lat' })
-  public Lat: number;
-  @JsonProperty({ name: 'Long' })
-  public Long: number;
-  @JsonProperty({ name: 'Raio' })
+  @JsonProperty({ name: "Latitude" })
+  public Latitude: number;
+  @JsonProperty({ name: "Longitude" })
+  public Longitude: number;
+  @JsonProperty({ name: "Raio" })
   public Raio: number;
-  @JsonProperty({ name: 'Preco' })
-  public Preco: number;
-  @JsonProperty({ name: 'Loja' })
-  public Loja: number;
-  @JsonProperty({ name: 'Descricao' })
+  @JsonProperty({ name: "Preco" })
+  public Preco: number = 0.0;
+  @JsonProperty({ name: "IdCentroDistribuicao" })
+  public IdCentroDistribuicao: number;
+  @JsonProperty({ name: "Descricao" })
   public Descricao: number;
 
   static Create(json: any): RaioPreco {
