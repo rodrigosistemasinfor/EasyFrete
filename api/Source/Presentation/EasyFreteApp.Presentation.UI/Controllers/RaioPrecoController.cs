@@ -32,6 +32,20 @@ namespace EasyFreteApp.Presentation.UI.Controllers
             return user;
         }
 
+        [HttpGet("verificar_frete/{address_text}")]
+        [ProducesResponseType(typeof(BuscaPrecosDomain), 200)]
+        public ActionResult<RaioPrecoDomain> VerificarFrete(string address_text)
+        {
+            if (string.IsNullOrEmpty(address_text))
+                throw new Exception("Filtro inválido");
+
+            
+            return Ok(new ResponseViewModel
+            {
+                Data = this._service.BuscarPrecos(address_text),
+            });
+        }
+
 
         [HttpPost("list")]
         [ProducesResponseType(typeof(IEnumerable<RaioPrecoDomain>), 200)]
@@ -61,7 +75,7 @@ namespace EasyFreteApp.Presentation.UI.Controllers
         {
             try
             {
-              return StatusCode((int)HttpStatusCode.Created, _service.InsertMany(objs));
+                return StatusCode((int)HttpStatusCode.Created, _service.InsertMany(objs));
             }
             catch (Exception ex)
             {

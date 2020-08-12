@@ -17,6 +17,7 @@ import Stroke from "ol/style/Stroke";
 import { FullScreen, defaults as defaultControls } from "ol/control";
 import { GeospatialService } from "src/app/services/geospatial.service";
 import { RaioPrecoService } from "src/app/services/raioPreco.service";
+import { ToastrManager } from "ng6-toastr-notifications";
 declare const ContextMenu: any;
 
 @Component({
@@ -26,6 +27,7 @@ declare const ContextMenu: any;
 export class LojasComponent implements OnInit {
   constructor(
     private geospatialService: GeospatialService,
+    public toastr: ToastrManager,
     private raioPrecoService: RaioPrecoService
   ) {}
   map: any;
@@ -63,8 +65,8 @@ export class LojasComponent implements OnInit {
   save() {
     this.raioPrecoService.insertMany(this.arrayRadius).subscribe((res) => {
       this.arrayRadius = [];
-      window.alert("Raios de preço salvos com sucesso");
       console.log(res);
+      this.toastr.infoToastr("Raios de preço salvos com sucesso");
     });
   }
 

@@ -1,9 +1,11 @@
+import { PrecoFrete } from "./../../model/preco-frete.model";
 import { Component, OnInit } from "@angular/core";
 import { ToastrManager } from "ng6-toastr-notifications";
 import { Router } from "@angular/router";
 import { EnderecoService } from "../../services/endereco.service";
 import { EnderecoModel } from "../../model/endereco.model";
 import { GeospatialService } from "src/app/services/geospatial.service";
+import { RaioPrecoService } from "src/app/services/raioPreco.service";
 
 @Component({
   selector: "home-page",
@@ -12,19 +14,27 @@ import { GeospatialService } from "src/app/services/geospatial.service";
 })
 export class HomePage implements OnInit {
   public model: EnderecoModel = new EnderecoModel();
+  precosFrete: PrecoFrete[];
 
   constructor(
     private _service: EnderecoService,
     public toastr: ToastrManager,
     private _router: Router,
-    private geospatialService: GeospatialService
+    private geospatialService: GeospatialService,
+    private raioPrecoService: RaioPrecoService
   ) {}
 
   ngOnInit() {}
 
   getPreco() {
-    let txt = `${this.model.Logradouro.split(' ').join('+')}%2C${this.model.Numero}%${this.model.Bairro}+${this.model.CEP}+${this.model.Cidade}+${this.model.Uf}%2C+Brazil`;
-    this.geospatialService.geocode(txt).subscribe();
+    let txt = `${this.model.Logradouro.split(" ").join("+")}%2C${
+      this.model.Numero
+    }%${this.model.Bairro}+${this.model.CEP}+${this.model.Cidade}+${
+      this.model.Uf
+    }%2C+Brazil`;
+    this.raioPrecoService.verificarFrete(txt).subscribe((res) => {
+      this.precosFrete = res;
+    });
   }
 
   private getEndereco() {

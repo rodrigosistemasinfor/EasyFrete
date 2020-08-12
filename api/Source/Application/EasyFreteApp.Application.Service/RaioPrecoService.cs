@@ -3,12 +3,18 @@ using EasyFreteApp.Domain;
 using EasyFreteApp.Domain.Repository;
 using EasyFreteApp.Domain.Seletores;
 using EasyFreteApp.Domain.Service;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EasyFreteApp.Application.Service
 {
     public class RaioPrecoService : ServiceBase<IRaioPrecoRepository, RaioPrecoDomain, RaioPrecoSeletor>, IRaioPrecoService
     {
-        public RaioPrecoService(IRaioPrecoRepository repository) : base(repository) { }
+        private readonly IGeospatialService _geospatialService;
+        public RaioPrecoService(IRaioPrecoRepository repository, IGeospatialService geospatialService) : base(repository)
+        {
+            this._geospatialService = geospatialService;
+        }
 
         public void Delete(int id)
         {
@@ -22,8 +28,14 @@ namespace EasyFreteApp.Application.Service
 
         public override RaioPrecoDomain Insert(RaioPrecoDomain domain)
         {
-           //chamar validation
-           return base.Insert(domain);
+            //chamar validation
+            return base.Insert(domain);
+        }
+
+        public async Task<IEnumerable<BuscaPrecosDomain>> BuscarPrecos(string address_text)
+        {
+            var coords = await this._geospatialService.Geocode(address_text);
+            return this._repository.BuscarPrecos(coords.Latitude, coords.Longitude);
         }
     }
 }

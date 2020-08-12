@@ -2,6 +2,7 @@
 using EasyFreteApp.Domain;
 using EasyFreteApp.Domain.Domain.Json;
 using EasyFreteApp.Infra.Data.Entities;
+using EasyFreteApp.Infra.Data.Entities.QueryResult;
 using System;
 
 namespace EasyFreteApp.Infra.CrossCutting
@@ -24,6 +25,8 @@ namespace EasyFreteApp.Infra.CrossCutting
 
             CreateMap<RaioPrecoEntity, RaioPrecoDomain>();
             CreateMap<RaioPrecoDomain, RaioPrecoEntity>();
+            
+            CreateMap<BuscaPrecosEntity, BuscaPrecosDomain>().ReverseMap();
 
 
             //map json to domain

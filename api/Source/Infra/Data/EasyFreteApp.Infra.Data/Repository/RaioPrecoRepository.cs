@@ -3,9 +3,15 @@ using EasyFreteApp.Domain;
 using EasyFreteApp.Domain.Repository;
 using EasyFreteApp.Domain.Seletores;
 using EasyFreteApp.Infra.Data.Entities;
+using EasyFreteApp.Infra.Data.Entities.QueryResult;
 using EasyFreteApp.Infra.Data.Interface;
 using EasyFreteApp.Infra.Data.Repository.Abstract;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyFreteApp.Infra.Data.Repository
 {
@@ -20,5 +26,31 @@ namespace EasyFreteApp.Infra.Data.Repository
 
             return query;
         }
+
+        public IEnumerable<BuscaPrecosDomain> BuscarPrecos(float latitude, float longitude)
+        {
+
+            try
+            {
+                SqlParameter prLat = new SqlParameter
+                {
+                    ParameterName = "lat",
+                    Value = latitude
+                };
+                SqlParameter prLon = new SqlParameter
+                {
+                    ParameterName = "lon",
+                    Value = longitude
+                };
+
+                var query = this._uow.Context.Set<BuscaPrecosEntity>().FromSqlRaw("Exec EasyFrete.buscarPrecos @lat, @lon", prLat, prLon).ToList();
+                return _mapper.Map<IEnumerable<BuscaPrecosDomain>>(query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
+

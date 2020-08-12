@@ -24,6 +24,7 @@ namespace EasyFreteApp.Infra.CrossCutting
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ICepService, CepService>();
             services.AddScoped<IRaioPrecoService, RaioPrecoService>();
+            services.AddScoped<IGeospatialService, GeospatialService>();
 
             // Repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
