@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EasyFreteApp.Infra.Data.Entities.QueryResult
+﻿namespace EasyFreteApp.Infra.Data.Entities.QueryResult
 {
     public class BuscaPrecosEntity
     {

@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EasyFreteApp.Infra.Data.Repository
 {
@@ -29,7 +28,6 @@ namespace EasyFreteApp.Infra.Data.Repository
 
         public IEnumerable<BuscaPrecosDomain> BuscarPrecos(float latitude, float longitude)
         {
-
             try
             {
                 SqlParameter prLat = new SqlParameter
@@ -43,7 +41,7 @@ namespace EasyFreteApp.Infra.Data.Repository
                     Value = longitude
                 };
 
-                var query = this._uow.Context.Set<BuscaPrecosEntity>().FromSqlRaw("Exec EasyFrete.buscarPrecos @lat, @lon", prLat, prLon).ToList();
+                var query = this._uow.Context.Set<BuscaPrecosEntity>().FromSqlRaw("Exec EasyFrete.buscarPrecos @lat, @lon", prLat, prLon).AsNoTracking().ToList();
                 return _mapper.Map<IEnumerable<BuscaPrecosDomain>>(query);
             }
             catch (Exception ex)

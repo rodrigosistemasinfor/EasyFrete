@@ -12,7 +12,6 @@ import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxMaskModule } from "ngx-mask";
 import { LojasComponent } from "./pages/lojas/lojas.component";
-import { AccordionModule } from "ngx-bootstrap/accordion";
 
 @NgModule({
   declarations: [AppComponent, HomePage, LojasComponent],
