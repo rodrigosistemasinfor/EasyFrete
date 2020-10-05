@@ -12,9 +12,10 @@ import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxMaskModule } from "ngx-mask";
 import { LojasComponent } from "./pages/lojas/lojas.component";
+import { cdPage } from './pages/cd/cd.page';
 
 @NgModule({
-  declarations: [AppComponent, HomePage, LojasComponent],
+  declarations: [AppComponent, HomePage, LojasComponent, cdPage],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
