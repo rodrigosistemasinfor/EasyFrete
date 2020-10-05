@@ -55,7 +55,7 @@ export class LojasComponent implements OnInit {
             Longitude: draw.value.coord[0],
             Raio: Math.round(draw.value.radius * 100) / 100,
             Descricao: res.data.adress,
-            IdCentroDistribuicao: this.selectedCd,
+            IdCentroDistribuicao: +this.selectedCd,
             Preco: 0.0,
           } as RaioPreco);
         });
@@ -65,7 +65,6 @@ export class LojasComponent implements OnInit {
   save() {
     this.raioPrecoService.insertMany(this.arrayRadius).subscribe((res) => {
       this.arrayRadius = [];
-      console.log(res);
       this.toastr.infoToastr("Raios de preço salvos com sucesso");
     });
   }
