@@ -1,30 +1,28 @@
-import { EnderecoModel } from '../model/endereco.model';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import { map, retry } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { EnderecoModel } from "../model/endereco.model";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { map, retry } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root",
 })
-export class EnderecoService{
+export class EnderecoService {
+  private endPoint: string;
 
-    private endPoint: string;
+  constructor(private http: HttpClient) {
+    this.endPoint = `${environment.Api}cep/`;
+  }
 
-    constructor(private http: HttpClient) {
-        this.endPoint =  `${environment.ApiCEP}`;
-    }
-    
-    httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
+  httpOptions = {
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
+  };
 
-    getEndereco(cep: string) : Observable<EnderecoModel>{
-      return this.http.get(`${this.endPoint}${cep}/json`)
-        .pipe(
-             retry(5),
-             map(resp => new EnderecoModel(resp))
-            );
-    }
+  getEndereco(cep: string): Observable<EnderecoModel> {
+    return this.http.get(`${this.endPoint}${cep}`).pipe(
+      retry(5),
+      map((resp) => new EnderecoModel(resp))
+    );
+  }
 }
