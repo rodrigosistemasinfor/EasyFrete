@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ApiCEP: "https://viacep.com.br/ws/"
+  Api: "http://localhost:5000/api/"
 };
 
 /*
